@@ -19,44 +19,30 @@
   year = {2013},
   annote = {
 
-Start off with formalisms and definitions frequently used by the papers the authors cover, such as definitions for the support of a subgraph and how it defines a frequent subgraph; graph isomorphism; and tree varieties such as free trees, unordered trees, induced subtrees and embedded subtrees.
+Start off with formalisms and definitions used later by the papers covered in this survey, such as definitions for the support of a subgraph and how it defines a frequent subgraph; graph isomorphism; and tree varieties such as free trees, unordered trees, induced subtrees and embedded subtrees.
 Brief overview of graph isomorphism detection, highlighting the computational complexity of graph isomorphism, subgraph isomorphism, and tree isomorphism.
-In this overview is a brief descriptoin of five primary graph and subgraph isomorphic detection algorithms dating back to the late 70s / early 80s and the late 90s / early 2000s.
+In this overview is a brief descriptoin of five primary graph and subgraph isomorphic detection algorithms dating back to the late 70s / early 80s and more recent innovations in late 90s / early 2000s.
 
 Brief overview of frequent subgraph and frequent subtree mining algorithms over the range of 2001 to 2008.
 Broken up by how candidates are generated and how support is computed.
 
 Describe canonical representation of graphs and trees as a means to facilitate isomorphism detection, splitting them by whether they cover graphs or trees and by whether the a canonical labelling is built using a BFS traversal or a DFS traversal.
 However, they only state that if two graphs are isomorphic, then their canonical labellings are identical.
-They do not, however, mention if the converse is true: if two canonical labellings are equal, then are their corresponding graphs isomorphic?
+They do not mention if the converse is true: if two canonical labellings are equal, then are their corresponding graphs isomorphic?
 
-19 algorithms on Frequent Subtree Mining.
-25 algorithms on Frequent Subgraph Mining.
+From there, authors provide a brief description of 19 algorithms on Frequent Subtree Mining and 25 algorithms on Frequent Subgraph Mining.
+Their discussion focuses primarily on:
+1. The nature of the graphs input and output by these algorithms: (e.g. ordered vs unordered trees, rooted vs free trees, single- vs transaction-graphs),
+2. The nature of the output graphs (e.g. exact vs inexact matching, connected embedded trees, etc.),
+3. The primary goals of the works (e.g. exact vs inexact matches, reduced cost of candidate generation, mining of embedded vs induced subgraphs, maximal or closed trees, etc.),
+4. The applicability and usefulness of these algorithms to certain fields is mentioned (e.g. protein-protein interactions, social networks, market analysis),
+5. The methods used by these algorithms: search space traversal and pruning, candidate subgraph/tree generation, support computation along with utilized data structures, and the performance relationships with other works as derived from experimental analysis.
+From this discussion, it was noted that there are benefits and drawbacks to using BFS strategies or DFS strategies.
+With BFS/Apriori-based approaches, an algorithm has better capabilities to prune the subgraph search space at the cost of higher spatial complexities. Likewise, BFS strategies offer tigher upper bounds on k-subgraph candidate support values by utilizing the supports from the previous layer's (k-1)-subgraph support values.
+On the other hand, DFS strategies provide memory efficiency, but at the cost of higher computational complexities for pruning and support computation.
+Following their overview of proposed works in FGM and FTM, the authors close the paper with a discussion of open areas in need of attention.
 
-Mentioning the nature of the graphs input and output by these algorithms: (e.g. ordered vs unordered trees, rooted vs free trees, single- vs transaction-graphs),
-nature of the output graphs (e.g. exact vs inexact matching,
-
-Goals of the works (e.g. exact vs inexact matches, reduced cost of candidate generation, mining of embedded vs induced subgraphs, maximal or closed trees, etc.).
-Demonstrated applicability and usefulness in certain fields (e.g. protein-protein interactions, social networks, market analysis).
-
- and the methods used by these algorithsm: search space traversal and pruning, candidate subgraph/tree generation, support computation along with utilized data structures, and the performance relationships with other works as derived from experimental analysis.
-
-BFS strategies: better capabilities for pruning the subgraph search space at the cost of higher spatial complexities; tigher upper bounds on k-subgraph candidate support values based on (k-1)-subgraph supports
-DFS strategies: memory efficient at the cost of higher computational complexities
-
-In the definition of a labelled unordered tree, there appears to be several technical errors, first in the defining of the the range of the labelling function psi, and second in the in-line definition of a right-most path of an unordered tree.
-By defining it as $\psi(v_i) \to v_i$, it appears as though the labelling function is just an identity function for the vertex $v_i$.
-In regards to the right-most path, it is not clear how paths in an unordered tree can be called right-most or left-most as there is no ordering for sibling nodes.
-
-The definitions of induced subgraphs/trees and embedded subgraphs/trees is not sufficiently elaborated so as to be understood when they are discussed with FSM algorithms.
-Typographical errors: Embedded subtree: no relational operator between preorder(u) and preorder(v) of nodes in the embedded subtree.
-Irregular sentences.
-
-Definition of DFCS doesn't specify the condition when a backtracking symbol is inserted into a tree's canonical label during traversal.
-
-The authors also fail to mention that the equivalence-class based extension method is a specialization of the level-wise join, along with some notation abuses for equivalence classes.
-
-When referring to 
+In regards to the quality of the paper, overall it is well written with the comprehensive coverage of the state-of-the-art, the brevity of their summaries, and their categorization.
 
 Most proposed works in these fields came out in 2004 - the authors briefly describe 12 from that year - with following years showing a drop in new proposals, indicative of the field's maturation.
 However, as the authors mention, there still exists open problems.
@@ -66,6 +52,20 @@ Authors haven't characterized the properties of compact subgraphs that are repre
 Latest papers of which the authors include in their discussion date to 2008, which leaves a four year gap between their covered state-of-the-art and this article's papers.
 The authors suggest field maturity as a cause of this gap in that no significant works have been proposed since 2007, but rather incremental improvements of existing strategies.
 It would have been appropriate to provide acknowledgements to these minor improvements at least as an after-comment to those solutions on which improvements were made.
+
+
+However, there are instances of errors, vagueness, and troublesome explanations.
+1. In the definition of a labelled unordered tree, there appears to be several technical errors, first in the defining of the the range of the labelling function $\psi$, and second in the in-line definition of a right-most path of an unordered tree.
+By defining it as $\psi(v_i) \to v_i$, it appears as though the labelling function is just an identity function for the vertex $v_i$.
+In regards to the right-most path, it is not clear how paths in an unordered tree can be called right-most or left-most, as there is no ordering for sibling nodes.
+
+2. The definitions of induced subgraphs/trees and embedded subgraphs/trees appear insufficiently elaborated so as convey a clear understooding of these mathematical constructs and their roles in the later-discussed FSM algorithms.
+Likewise, there are some typographical omissions and irregularly-phrased sentences in this definition.
+
+3. For the definition of Depth-first canonical string method, the authors do not specify the condition when a backtracking symbol is to be inserted into a tree's canonical label during traversal.
+
+4. The authors also fail to mention that the equivalence-class based extension method is a specialization of the level-wise join, along with some notation abuses for equivalence classes.
+This isn't an error, but an oversight that would have added to the clarity and brevity of that section.
 
 
 Likewise, there are some typos and inconsistencies that the authors overlooked: hyphenation ("k subgraph" in 3.2.1 vs "k-subtrees" in 3.2.2), capitalization ("$Right(T)$" vs "$left(T)$" in 3.2.5), and misabbreviations ("DLS-LS" and "DLS-DS" in 4.1), numbering in lists ("ii" is repeated twice in 5.2).
