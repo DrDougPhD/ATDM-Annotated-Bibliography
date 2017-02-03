@@ -11,8 +11,25 @@
   ISSN={1041-4347}, 
   month={Sept},
   annote = {
+  
+This paper proposes a new algorithm, FSG, for mining frequent connected subgraphs in undirected transaction graphs.
+The approach adopted by FSG is to generate candidate subgraphs in a breadth-first manner, representing generated candidates in canonical form and computing their frequency of occurrence using a number of speed-up strategies.
+Novel contributions include 
+  the Level-wise Join operation for generating candidates with reduced duplication; 
+  a partitioning strategy aimed at quickly pruning candidates and relaxing the memory demands of Transaction ID lists;
+  and a canonical labeling scheme that speeds up support calculations and reduces the number of subgraph isomorphism operations needed for a set of generated candidates.
+  Their canonical labeling scheme adopts a partitioning strategy that reduces the combinatorial complexity of canonical label construction by taking advantage of vertex invariance properties and applying specialized partitioning and ordering of the vertices in a candidate subgraph.
+  Further, they propose specific partitioning strategies targeted at graphs with low label diversity and high symmetry and regularity so as to not suffer from frequent automorphisms.
 
+Through their experimental evaluations, the authors demonstrate the effectiveness and scalability of FSG when applied to real-world chemical datasets and synthetically generated transaction datasets.
+The datasets are sufficiently diverse in properties so as to demonstrate FSG's performance on a few large transactions and many small transactions, both exhibiting low label diversity, as well as datasets with a varying degree of transactions, edges, frequent subgraph counts, and vertex-/edge-label diversity.
+However, it appears as though graphs exhibiting high symmetry or regularity were not adequately tested.
+It was also noted that FSG does not perform well on graphs with low label diversity, but its' strategies aimed at reducing memory demands was successful when compared to the alternative approach.
 
+Overall, the paper is very well written and easy to comprehend, with only a few typos or awkward grammatical structures.
+The primary novelty of this work is through the canonical representation scheme, for which they provide proof of its correctness in the appendix.
+The only concerning aspects of the paper is the absence of a comparative evaluation of FSG against related work, such as SUBDUE, WARMR, AGM, or gSpan, all of which were published prior to this work.
+Another issue, although miner, is the presentation of some of the experimental results as tables, where the plotting of this data would have aided in a reader's understanding of FSG's scalability.
   
   }
 }
