@@ -16,13 +16,13 @@ The authors claim the use of their canonical labeling permits fast finding of fr
 This is accomplished by recursively expanding frequent subgraphs by one edge, and checking whether those subgraphs are frequent using an implicit TID list.
 If the code created from a subgraph is not the subgraph's minimum code, it is immediately pruned, as the authors have proven in a technical report that this subgraph was already processed earlier in the algorithm's execution.
 
-// // 
+\\ \\
 
 Performance-wise, the authors compared gSpan against FSG, using one of the same datasets and the same method for producing a synthetic dataset.
 Through their experiments, they found that gSpan is able to find all frequent subgraphs much faster and with much less memory consumption than FSG.
 However, their experiments do not indicate whether gSpan and FSG found the same subgraphs, although this might be implicit in context.
 
-// //
+\\ \\
 
 This paper seems like a high quality breakthrough in the field of frequent subgraph mining, but it's difficult to state this with confidence due to the density of the authors' technical writing.
 The authors make claims and supply a theorem that are not substantianted in this paper.
