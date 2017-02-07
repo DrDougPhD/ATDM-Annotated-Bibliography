@@ -16,15 +16,13 @@ This paper proposes an extension to the authors' SUBDUE system, whereby they str
 A breadth-first search is used to generate candidate subgraphs whereby previously-found subgraphs are expanded one edge at a time.
 These are then scored based on the reduction in the compressed graph's description length as well as optional guidance from background knowledge rules.
 Ultimately, subgraphs that offer the best compression ratio and highest domain-specific score are identified.
-Although it was not explicity mentioned by the authors, SUBDUE is able to guarantee that only frequent subgraphs are returned by utilizing these background knowledge rules.
 Their algorithm has been found to prefer smaller, more frequent subgraphs over larger ones, but subsequent passes of SUBDUE may be performed on the previous pass's output graph so as to identify larger subgraphs.
 
 \\ \\
 
 The experimental analysis of SUBDUE focuses on the fields of chemical component analysis, object recognition in images, and CAD circuit analysis.
-The experiments conducted by the authors are very limited in the insights that may be drawn from their system's performance.
-The authors only offer the compression ratio achieved by SUBDUE when executed on the few datasets used.
-There was no comparitive analysis performed against other similar systems, nor do their experiments record useful performance metrics such as runtimes or number/size of frequently occurring subgraphs.
+The experiments conducted appear limited in the insights that may be drawn from their system's performance, as the authors only offer the compression ratio achieved by SUBDUE when executed on the few datasets used.
+There was no comparitive analysis performed against other similar systems, which the authors identify a few in the related works section, nor do their experiments record useful performance metrics such as runtimes or the number/sizes of the subgraphs identified in their experiments.
 
 \\ \\
 
