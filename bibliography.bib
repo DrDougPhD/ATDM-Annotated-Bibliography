@@ -1,3 +1,41 @@
+@inproceedings{Holder:1994:SDS:3000850.3000868,
+ author = {Holder, Lawrence B. and Cook, Diane J. and Djoko, Surnjani},
+ title = {Substructure Discovery in the SUBDUE System},
+ booktitle = {Proceedings of the 3rd International Conference on Knowledge Discovery and Data Mining},
+ series = {AAAIWS'94},
+ year = {1994},
+ location = {Seattle, WA},
+ pages = {169--180},
+ numpages = {12},
+ url = {http://dl.acm.org/citation.cfm?id=3000850.3000868},
+ acmid = {3000868},
+ publisher = {AAAI Press},
+	annote = {
+
+This paper proposes an extension to the authors' SUBDUE system, whereby they strive to compress directed, labeled multigraphs through the discovery and substitution of recurring - but not necessarily frequent - subgraphs through either exact or inexact matching.
+A breadth-first search is used to generate candidate subgraphs whereby previously-found subgraphs are expanded one edge at a time.
+These are then scored based on the reduction in the compressed graph's description length as well as optional guidance from background knowledge rules.
+Ultimately, subgraphs that offer the best compression ratio and highest domain-specific score are identified.
+Although it was not explicity mentioned by the authors, SUBDUE is able to guarantee that only frequent subgraphs are returned by utilizing these background knowledge rules.
+Their algorithm has been found to prefer smaller, more frequent subgraphs over larger ones, but subsequent passes of SUBDUE may be performed on the previous pass's output graph so as to identify larger subgraphs.
+
+\\ \\
+
+The experimental analysis of SUBDUE focuses on the fields of chemical component analysis, object recognition in images, and CAD circuit analysis.
+The experiments conducted by the authors are very limited in the insights that may be drawn from their system's performance.
+The authors only offer the compression ratio achieved by SUBDUE when executed on the few datasets used.
+There was no comparitive analysis performed against other similar systems, nor do their experiments record useful performance metrics such as runtimes or number/size of frequently occurring subgraphs.
+
+\\ \\
+
+Overall, the paper is well written but limited in the insights one may draw from the content alone.
+By today's standards, it is flawed in the thoroughness of its experimental analysis and its inability to identify all frequently occurring subgraphs.
+The authors claim that repeated executions of SUBDUE will render better results, but neglect to thoroughly demonstrate this through experimentation.
+Since this work may have been the seminal work on frequent subgraph mining, it is understandable that the related work section is not entirely focused on previous works in this field.
+
+	}
+}
+
 @article{KuramochiKarypis2004, 
   author={M. Kuramochi and G. Karypis}, 
   journal={IEEE Transactions on Knowledge and Data Engineering}, 
