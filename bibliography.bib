@@ -110,24 +110,25 @@ The authors claim that repeated executions of SUBDUE will render better results,
   month={Sept},
   annote = {
 
-This paper proposes a new algorithm, FSG, for mining frequent connected subgraphs in undirected transaction graphs.
-The approach adopted by FSG is to generate candidate subgraphs in a breadth-first manner, representing generated candidates in canonical form and computing their frequency of occurrence using a number of speed-up strategies.
+FSG targets the frequent connected subgraphs residing in undirected transaction graphs through a BFS candidate generation scheme.
+Each candidate is represented in canonical form and their occurrence frequency is computed a number of speed-up strategies.
 Novel contributions include 
   the level-wise join operation for generating candidates with reduced duplication; 
-  a partitioning strategy aimed at quickly pruning candidates and relaxing the memory demands of Transaction ID lists;
-  and a canonical labeling scheme that speeds up support calculations and reduces the number of subgraph isomorphism operations needed for a set of generated candidates, with extensions to assist graphs with low label diversity or high symmetry and regularity.
+  a partitioning strategy aimed at quickly pruning candidates and relaxing the memory demands of transaction ID lists;
+  and a canonical labeling scheme that speeds up support calculations and reduces the number of needed subgraph isomorphism operations.
+Various extensions of this labeling scheme are offered to assist graphs with low label diversity or high symmetry and regularity.
   
 \\ \\
 
-Through their experimental evaluations, the authors demonstrate the effectiveness and scalability of FSG when applied to real-world chemical datasets and synthetically generated transaction datasets.
-These datasets are sufficiently diverse in properties so as to demonstrate FSG's performance on a few large transactions and many small transactions, both exhibiting low label diversity, as well as datasets with a varying degree of transactions, edges, frequent subgraph counts, and vertex-/edge-label diversity.
-It was also noted that FSG does not perform well on graphs with low label diversity, but its' strategies aimed at reducing memory demands was successful when compared to the alternative approach.
-Additionally, it appears as though graphs exhibiting high symmetry and regularity were not adequately tested.
+Through experimental evaluations, the authors demonstrate the effectiveness and scalability of FSG when applied to real-world chemical datasets and synthetically generated transaction datasets.
+These datasets are sufficiently diverse in properties so as to demonstrate FSG's performance on a few real-world large transactions, many real-world small transactions, and highly diverse synthetic transactions.
+FSG does not perform well on graphs with low label diversity, but its' strategies aimed at reducing memory demands were successful when compared to the alternative approach.
+Graphs exhibiting high symmetry and regularity, however, were not adequately tested, thus flawing that portion of their contributions.
 
 \\ \\
 
 Overall, the paper is very well written and easy to comprehend, with only a few typos and awkward grammatical structures.
-The primary novelty of this work is through the canonical representation scheme, for which they provide proof of its correctness in the appendix.
+The primary novelty of this work is through the canonical representation scheme for which they provide proof of its correctness in the appendix.
 The only concerning aspects of the paper is the absence of a comparative evaluation of FSG against related work and the presentation of some of the experimental results as tables, where the plotting of this data would have aided in a reader's understanding of FSG's scalability.
   
   }
