@@ -76,10 +76,10 @@ Regardless of these issues, the citation count and publication venue of this wor
 	annote = {
 
 This paper proposes an extension to the authors' SUBDUE system, whereby they strive to compress directed, labeled multigraphs through the discovery and substitution of recurring - but not necessarily frequent - subgraphs through either exact or inexact matching.
-A breadth-first search is used to generate candidate subgraphs whereby previously-found subgraphs are expanded one edge at a time.
-These are then scored based on the reduction in the compressed graph's description length as well as optional guidance from background knowledge rules.
+BFS traversal generate candidate subgraphs from previously-found subgraphs, expanding them one edge at a time.
+These candidates then scored based on the reduction in the compressed graph's description length as well as optional guidance from background knowledge rules.
 Ultimately, subgraphs that offer the best compression ratio and highest domain-specific score are identified.
-Their algorithm has been found to prefer smaller, more frequent subgraphs over larger ones, but subsequent passes of SUBDUE may be performed on the previous pass's output graph so as to identify larger subgraphs.
+Their algorithm has been found to prefer smaller, more frequent subgraphs over larger ones, but subsequent passes of SUBDUE may be performed on the previous pass's output so as to identify larger subgraphs.
 
 \\ \\
 
@@ -92,7 +92,6 @@ There was no comparative analysis performed against other similar systems, which
 Overall, the paper is well written but limited in the insights one may draw from the content alone.
 By today's standards, it is flawed in the thoroughness of its experimental analysis and its inability to identify all frequently occurring subgraphs.
 The authors claim that repeated executions of SUBDUE will render better results, but neglect to thoroughly demonstrate this through experimentation.
-Since this work may have been the seminal work on frequent subgraph mining, it is understandable that the related work section is not entirely focused on previous works in this field.
 
 	}
 }
