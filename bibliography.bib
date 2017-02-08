@@ -1,76 +1,12 @@
-@inproceedings{Huan:2003:EMF:951949.952101,
- author = {Huan, Jun and Wang, Wei and Prins, Jan},
- title = {Efficient Mining of Frequent Subgraphs in the Presence of Isomorphism},
- booktitle = {Proceedings of the Third IEEE International Conference on Data Mining},
- series = {ICDM '03},
- year = {2003},
- isbn = {0-7695-1978-4},
- pages = {549--},
- url = {http://dl.acm.org/citation.cfm?id=951949.952101},
- acmid = {952101},
- publisher = {IEEE Computer Society},
- address = {Washington, DC, USA},
-	annote = {
-
-FFSM is the proposed frequent subgraph mining algorithm of this work, operating on labeled undirected transaction graphs in a BFS manner.
-The targeted goal is to eliminate redundantly-generated subgraphs while the search space is traversed, thereby reducing the algorithm's runtime.
-This is accomplished through the usage of the canonical adjacency matrix (CAM) as a means of uniquely representing a graph.
-Each graph is represented as a edge/node-labeled adjacency matrix, whereby the CAM of a graph is its adjacency matrix with the lexicographic-maximal encoding.
-The encoding is simple: concatenate the rows of the lower-triangular into a flat string.
-This scheme offers simple relationships between a represented graph and its subgraphs, leading to efficient candidate generation through joins and extensions of frequent subgraphs and quick pruning if a generated candidate is not in CAM form.
-
-\\ \\
-
-In terms of quality, this paper needs to further elaborate on the join and extension operations as well as the usefulness of a CAM's embedding set, as it is unclear how these operations and concepts are performed and useful.
-Most of the rigorous material is relocated into a non-peer reviewed technical report, including the proofs of a theorem and several important corollaries and procedural pseudocode used in the main algorithm.
-The experimental evaluation of FFSM indicates that its runtimes beat those of gSpan, although only one set of experiments is demonstrated in this paper with further experiments detailed in the aforementioned technical report.
-
-	}
-} 
-
-
-@INPROCEEDINGS{1184038, 
-	author={Xifeng Yan and Jiawei Han}, 
-	booktitle={2002 IEEE International Conference on Data Mining, 2002. Proceedings.}, 
-	title={gSpan: graph-based substructure pattern mining}, 
-	year={2002}, 
-	pages={721-724}, 
-	keywords={data mining;tree searching;algorithm;canonical label;depth-first search strategy;frequent connected subgraph mining;frequent graph-based pattern mining;frequent substructure discovery;gSpan;graph datasets;graph-based substructure pattern mining;lexicographic order;performance study;unique minimum DFS code;Chemical compounds;Computer science;Costs;Data mining;Data structures;Graphics;Itemsets;Kernel;Testing;Tree graphs}, 
-	doi={10.1109/ICDM.2002.1184038}, 
-	month={},
-	annote = {
-
-gSpan targets undirected transaction graph datasets to find frequent subgraphs in a DFS manner.
-The main contribution of this paper is their new canonical labeling system based on a code generated through a DFS traversal of a graph.
-To build a canonical label, the authors define the concepts of a DFS code, the DFS Lexicographic Order, the minimum DFS code for a graph, and the DFS Code Tree.
-Using these, gSpan is able to quickly find frequent subgraphs without wasting resources on redundant candidates.
-Frequent subgraphs are recursively expanded one edge at a time and checked for sufficient support using the TID list from the subgraph generating it.
-If the code created from a subgraph is not the subgraph's minimum code, it is immediately pruned as it would have previously been processed.
-
-\\ \\
-
-This paper seems like a high quality breakthrough in the field of frequent subgraph mining, but it's difficult to state this with confidence due to the density of the authors' technical writing.
-For instance, the authors make claims and supply a theorem that are not substantiated in this paper.
-The reader is instead directed to their non-peer reviewed technical report.
-Their coverage of related works is lacking, only citing two other subgraph miners and two subtree miners with brief remarks.
-In addition, there are some technical errors and notational inconsistencies that muddy up the clarity of their defined concepts and algorithms.
-Performance-wise, the authors compared gSpan against FSG using similar datasets used by FSG, finding gSpan faster and less memory hogging than FSG.
-However, their experimental evaluation seems to have been conducted hastily, only comparing gSpan against FSG using one real-world dataset and a limited number of synthetic ones, all while ignoring AGM.
-Regardless of these issues, the citation count and publication venue of this work indicate that gSpan is as beneficial as the authors claim.
-
-	}
-}
-
-@inproceedings{Holder:1994:SDS:3000850.3000868,
+@inproceedings{SUBDUE1994,
  author = {Holder, Lawrence B. and Cook, Diane J. and Djoko, Surnjani},
  title = {Substructure Discovery in the SUBDUE System},
  booktitle = {Proceedings of the 3rd International Conference on Knowledge Discovery and Data Mining},
- series = {AAAIWS'94},
+ series = {AAAIWS '94},
  year = {1994},
  location = {Seattle, WA},
  pages = {169--180},
  numpages = {12},
- url = {http://dl.acm.org/citation.cfm?id=3000850.3000868},
  acmid = {3000868},
  publisher = {AAAI Press},
 	annote = {
@@ -96,43 +32,35 @@ The authors claim that repeated executions of SUBDUE will render better results,
 	}
 }
 
-@article{KuramochiKarypis2004, 
-  author={M. Kuramochi and G. Karypis}, 
-  journal={IEEE Transactions on Knowledge and Data Engineering}, 
-  title={An efficient algorithm for discovering frequent subgraphs}, 
-  year={2004}, 
-  volume={16}, 
-  number={9}, 
-  pages={1038-1051}, 
-  keywords={computational complexity;data mining;graph theory;pattern recognition;very large databases;chemical compound data sets;data mining techniques;frequent itemset discovery algorithms;frequent pattern discovery problem;frequent subgraph discovery;graph data sets;scientific data sets;Chemical compounds;Data mining;Frequency;Itemsets;Labeling;65;Index Terms- Data mining;chemical compound data sets.;frequent pattern discovery;scientific data sets}, 
-  doi={10.1109/TKDE.2004.33}, 
-  ISSN={1041-4347}, 
-  month={Sept},
-  annote = {
 
-FSG targets the frequent connected subgraphs residing in undirected transaction graphs through a BFS candidate generation scheme.
-Each candidate is represented in canonical form and their occurrence frequency is computed a number of speed-up strategies.
-Novel contributions include 
-  the level-wise join operation for generating candidates with reduced duplication; 
-  a partitioning strategy aimed at quickly pruning candidates and relaxing the memory demands of transaction ID lists;
-  and a canonical labeling scheme that speeds up support calculations and reduces the number of needed subgraph isomorphism operations.
-Various extensions of this labeling scheme are offered to assist graphs with low label diversity or high symmetry and regularity.
-  
-\\ \\
+@inproceedings{FFSM2003,
+  author = {Huan, Jun and Wang, Wei and Prins, Jan},
+  title = {Efficient Mining of Frequent Subgraphs in the Presence of Isomorphism},
+  booktitle={Third IEEE International Conference on Data Mining}, 
+  series = {ICDM '03},
+  year = {2003},
+  isbn = {0-7695-1978-4},
+  pages = {549-552},
+  publisher = {IEEE Computer Society},
+  address = {Washington, DC, USA},
+	annote = {
 
-Through experimental evaluations, the authors demonstrate the effectiveness and scalability of FSG when applied to real-world chemical datasets and synthetically generated transaction datasets.
-These datasets are sufficiently diverse in properties so as to demonstrate FSG's performance on a few real-world large transactions, many real-world small transactions, and highly diverse synthetic transactions.
-FSG does not perform well on graphs with low label diversity, but its' strategies aimed at reducing memory demands were successful when compared to the alternative approach.
-Graphs exhibiting high symmetry and regularity, however, were not adequately tested, thus flawing that portion of their contributions.
+FFSM is the proposed frequent subgraph mining algorithm of this work, operating on labeled undirected transaction graphs in a BFS manner.
+The targeted goal is to eliminate redundantly-generated subgraphs while the search space is traversed, thereby reducing the algorithm's runtime.
+This is accomplished through the usage of the canonical adjacency matrix (CAM) as a means of uniquely representing a graph.
+Each graph is represented as a edge/node-labeled adjacency matrix, whereby the CAM of a graph is its adjacency matrix with the lexicographic-maximal encoding.
+The encoding is simple: concatenate the rows of the lower-triangular into a flat string.
+This scheme offers simple relationships between a represented graph and its subgraphs, leading to efficient candidate generation through joins and extensions of frequent subgraphs and quick pruning if a generated candidate is not in CAM form.
 
 \\ \\
 
-Overall, the paper is very well written and easy to comprehend, with only a few typos and awkward grammatical structures.
-The primary novelty of this work is through the canonical representation scheme for which they provide proof of its correctness in the appendix.
-The only concerning aspects of the paper is the absence of a comparative evaluation of FSG against related work and the presentation of some of the experimental results as tables, where the plotting of this data would have aided in a reader's understanding of FSG's scalability.
-  
-  }
-}
+In terms of quality, this paper needs to further elaborate on the join and extension operations as well as the usefulness of a CAM's embedding set, as it is unclear how these operations and concepts are performed and useful.
+Most of the rigorous material is relocated into a non-peer reviewed technical report, including the proofs of a theorem and several important corollaries and procedural pseudocode used in the main algorithm.
+The experimental evaluation of FFSM indicates that its runtimes beat those of gSpan, although only one set of experiments is demonstrated in this paper with further experiments detailed in the aforementioned technical report.
+
+	}
+} 
+
 
 @article{Jiang2013,
 	abstract = {
@@ -153,7 +81,6 @@ This paper presents a survey of current research in the field of frequent subgra
   number = {01},
   pages = {75--105},
   title = {{A survey of frequent subgraph mining algorithms}},
-  url = {http://www.journals.cambridge.org/abstract{\_}S0269888912000331},
   volume = {28},
   year = {2013},
   annote = {
@@ -199,4 +126,76 @@ Overall, the paper is well written in its brevity, yet comprehensive in its cove
  acknowledgements to these minor improvements at least as an after-comment to 
  those solutions on which improvements were made.
   },
+}
+
+
+@article{KuramochiKarypis2004, 
+  author={M. Kuramochi and G. Karypis}, 
+  journal={IEEE Transactions on Knowledge and Data Engineering}, 
+  title={An efficient algorithm for discovering frequent subgraphs}, 
+  year={2004}, 
+  volume={16}, 
+  number={9}, 
+  pages={1038-1051}, 
+  keywords={computational complexity;data mining;graph theory;pattern recognition;very large databases;chemical compound data sets;data mining techniques;frequent itemset discovery algorithms;frequent pattern discovery problem;frequent subgraph discovery;graph data sets;scientific data sets;Chemical compounds;Data mining;Frequency;Itemsets;Labeling;65;Index Terms- Data mining;chemical compound data sets.;frequent pattern discovery;scientific data sets}, 
+  doi={10.1109/TKDE.2004.33}, 
+  ISSN={1041-4347}, 
+  month={Sept},
+  annote = {
+
+FSG targets the frequent connected subgraphs residing in undirected transaction graphs through a BFS candidate generation scheme.
+Each candidate is represented in canonical form and their occurrence frequency is computed a number of speed-up strategies.
+Novel contributions include 
+  the level-wise join operation for generating candidates with reduced duplication; 
+  a partitioning strategy aimed at quickly pruning candidates and relaxing the memory demands of transaction ID lists;
+  and a canonical labeling scheme that speeds up support calculations and reduces the number of needed subgraph isomorphism operations.
+Various extensions of this labeling scheme are offered to assist graphs with low label diversity or high symmetry and regularity.
+  
+\\ \\
+
+Through experimental evaluations, the authors demonstrate the effectiveness and scalability of FSG when applied to real-world chemical datasets and synthetically generated transaction datasets.
+These datasets are sufficiently diverse in properties so as to demonstrate FSG's performance on a few real-world large transactions, many real-world small transactions, and highly diverse synthetic transactions.
+FSG does not perform well on graphs with low label diversity, but its' strategies aimed at reducing memory demands were successful when compared to the alternative approach.
+Graphs exhibiting high symmetry and regularity, however, were not adequately tested, thus flawing that portion of their contributions.
+
+\\ \\
+
+Overall, the paper is very well written and easy to comprehend, with only a few typos and awkward grammatical structures.
+The primary novelty of this work is through the canonical representation scheme for which they provide proof of its correctness in the appendix.
+The only concerning aspects of the paper is the absence of a comparative evaluation of FSG against related work and the presentation of some of the experimental results as tables, where the plotting of this data would have aided in a reader's understanding of FSG's scalability.
+  
+  }
+}
+
+
+@INPROCEEDINGS{1184038, 
+	author={Xifeng Yan and Jiawei Han}, 
+	booktitle={2002 IEEE International Conference on Data Mining, 2002. Proceedings.}, 
+	title={gSpan: graph-based substructure pattern mining}, 
+	year={2002}, 
+	pages={721-724}, 
+	keywords={data mining;tree searching;algorithm;canonical label;depth-first search strategy;frequent connected subgraph mining;frequent graph-based pattern mining;frequent substructure discovery;gSpan;graph datasets;graph-based substructure pattern mining;lexicographic order;performance study;unique minimum DFS code;Chemical compounds;Computer science;Costs;Data mining;Data structures;Graphics;Itemsets;Kernel;Testing;Tree graphs}, 
+	doi={10.1109/ICDM.2002.1184038}, 
+	month={},
+	annote = {
+
+gSpan targets undirected transaction graph datasets to find frequent subgraphs in a DFS manner.
+The main contribution of this paper is their new canonical labeling system based on a code generated through a DFS traversal of a graph.
+To build a canonical label, the authors define the concepts of a DFS code, the DFS Lexicographic Order, the minimum DFS code for a graph, and the DFS Code Tree.
+Using these, gSpan is able to quickly find frequent subgraphs without wasting resources on redundant candidates.
+Frequent subgraphs are recursively expanded one edge at a time and checked for sufficient support using the TID list from the subgraph generating it.
+If the code created from a subgraph is not the subgraph's minimum code, it is immediately pruned as it would have previously been processed.
+
+\\ \\
+
+This paper seems like a high quality breakthrough in the field of frequent subgraph mining, but it's difficult to state this with confidence due to the density of the authors' technical writing.
+For instance, the authors make claims and supply a theorem that are not substantiated in this paper.
+The reader is instead directed to their non-peer reviewed technical report.
+Their coverage of related works is lacking, only citing two other subgraph miners and two subtree miners with brief remarks.
+In addition, there are some technical errors and notational inconsistencies that muddy up the clarity of their defined concepts and algorithms.
+Performance-wise, the authors compared gSpan against FSG using similar datasets used by FSG, finding gSpan faster and less memory hogging than FSG.
+However, their experimental evaluation seems to have been conducted hastily, only comparing gSpan against FSG using one real-world dataset and a limited number of synthetic ones, all while ignoring AGM.
+Regardless of these issues, the citation count and publication venue of this work indicate that gSpan is as beneficial as the authors claim.
+
+	}
 }
