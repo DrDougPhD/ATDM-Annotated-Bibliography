@@ -12,13 +12,12 @@
  address = {Washington, DC, USA},
 	annote = {
 
-FFSM is the proposed frequent subgraph mining algorithm of this work, operating on labeled undirected transaction graphs in a breadth-first search manner.
+FFSM is the proposed frequent subgraph mining algorithm of this work, operating on labeled undirected transaction graphs in a BFS manner.
 The targeted goal is to eliminate redundantly-generated subgraphs while the search space is traversed, thereby reducing the algorithm's runtime.
-This is accomplished through the usage of the proposed canonical adjacency matrix (CAM) as a means of uniquely representing a graph.
-Each graph is represented as an adjacency matrix with (non)diagonal elements corresponding to (edge) node labels.
-The CAM of a graph is simply the lexicographic-maximal encoding of the graph, whereby a graph is encoded by concatenating the lower-triangular entries into a flat string.
-This scheme offers useful properties that permit simple relationships between a represented graph and its subgraphs, leading to efficient supergraph generation from one or two subgraphs through joins and extensions and quick pruning if a generated supergraph is not in CAM form.
-In performing joins and extensions iteratively, a CAM tree is generated in a BFS manner, traversing and pruning the search space of candidate subgraphs in such a way as to prevent duplicate generated candidates.
+This is accomplished through the usage of the canonical adjacency matrix (CAM) as a means of uniquely representing a graph.
+Each graph is represented as a edge/node-labeled adjacency matrix, whereby the CAM of a graph is its adjacency matrix with the lexicographic-maximal encoding.
+The encoding is simple: concatenate the rows of the lower-triangular into a flat string.
+This scheme offers simple relationships between a represented graph and its subgraphs, leading to efficient candidate generation through joins and extensions of frequent subgraphs and quick pruning if a generated candidate is not in CAM form.
 
 \\ \\
 
