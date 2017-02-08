@@ -1,3 +1,33 @@
+@inproceedings{Huan:2003:EMF:951949.952101,
+ author = {Huan, Jun and Wang, Wei and Prins, Jan},
+ title = {Efficient Mining of Frequent Subgraphs in the Presence of Isomorphism},
+ booktitle = {Proceedings of the Third IEEE International Conference on Data Mining},
+ series = {ICDM '03},
+ year = {2003},
+ isbn = {0-7695-1978-4},
+ pages = {549--},
+ url = {http://dl.acm.org/citation.cfm?id=951949.952101},
+ acmid = {952101},
+ publisher = {IEEE Computer Society},
+ address = {Washington, DC, USA},
+	annote = {
+
+FFSM is the proposed frequent subgraph mining algorithm of this work, operating on labeled undirected transaction graphs in a breadth-first search manner.
+The targetted goal is to eliminate redundantly-generated subgraphs while the search space is traversed, thereby reducing the algorithm's runtime.
+This is accomplished through the usage of the proposed canonical adjacency matrix (CAM) as a means of uniquely representing a graph.
+Each graph is represented as an adjacency matrix with (non)diagonal elements corresponding to (edge) node labels.
+The CAM of a graph is simply the lexicographic-maximal encoding of the graph, whereby a graph is encoded by concatenating the lower-triangular entries into a flat string.
+This scheme offers useful properties that permit simple relationships between a represented graph and its subgraphs, leading to efficient supergraph generation from one or two subgraphs through joins and extensions and quick pruning if a generated supergraph is not in CAM form.
+In performing joins and extensions iteratively, a CAM tree is generated in a BFS manner, traversing and pruning the search space of candidate subgraphs in such a way as to prevent duplicate generated candidates.
+
+In terms of quality, this paper needs to further elaborate on the join and extension operations as well as the usefulness of a CAM's embedding set, as it is unclear how these operations and concepts are performed and useful.
+Most of the rigorous material is relocated into a non-peer reviewed technical report, including the proofs of a theorem and several important corollaries and procedural pseudocode used in the main algorithm.
+The experimental evaluation of FFSM indicates that its runtimes beat those of gSpan, although only one set of experiments is demonstrated in this paper with further experiments detailed in the aforementioned technical report.
+
+	}
+} 
+
+
 @INPROCEEDINGS{1184038, 
 	author={Xifeng Yan and Jiawei Han}, 
 	booktitle={2002 IEEE International Conference on Data Mining, 2002. Proceedings.}, 
