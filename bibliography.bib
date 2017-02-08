@@ -12,16 +12,16 @@
 	annote = {
 
 This paper proposes an extension to the authors' SUBDUE system, whereby they strive to compress directed, labeled multigraphs through the discovery and substitution of recurring - but not necessarily frequent - subgraphs through either exact or inexact matching.
-BFS traversal generate candidate subgraphs from previously-found subgraphs, expanding them one edge at a time.
-These candidates then scored based on the reduction in the compressed graph's description length as well as optional guidance from background knowledge rules.
-Ultimately, subgraphs that offer the best compression ratio and highest domain-specific score are identified.
-Their algorithm has been found to prefer smaller, more frequent subgraphs over larger ones, but subsequent passes of SUBDUE may be performed on the previous pass's output so as to identify larger subgraphs.
+A BFS traversal generates candidate subgraphs from previously-found subgraphs, expanding them one edge at a time.
+These candidates are then scored based on the reduction in the compressed graph's description length as well as optional guidance from background knowledge rules.
+Ultimately, subgraphs that offer the minimum description length (MDL) and highest domain-specific score are identified.
+Their algorithm has been found to prefer smaller, more frequent subgraphs over larger ones, but subsequent passes of SUBDUE may be performed on a previous pass's output so as to identify larger subgraphs.
 
 \\ \\
 
 The experimental analysis of SUBDUE focuses on the fields of chemical component analysis, object recognition in images, and CAD circuit analysis.
-The experiments conducted appear limited in the insights that may be drawn from their system's performance, as the authors only offer the compression ratio achieved by SUBDUE when executed on the few datasets used.
-There was no comparative analysis performed against other similar systems, which the authors identify a few in the related works section, nor do their experiments record useful performance metrics such as runtimes or the number/sizes of the subgraphs identified in their experiments.
+The conducted experiments appear limited in the insights that may be drawn from their system's performance, as the authors only offer the compression ratio achieved by SUBDUE when executed on the few datasets used.
+There was no comparative analysis performed against other similar systems identified in the related works section, nor did their experiments record useful performance metrics such as runtimes or the number/sizes of the subgraphs identified in their experiments.
 
 \\ \\
 
@@ -45,16 +45,15 @@ The authors claim that repeated executions of SUBDUE will render better results,
   address = {Washington, DC, USA},
 	annote = {
 
-FFSM is the proposed frequent subgraph mining algorithm of this work, operating on labeled undirected transaction graphs in a BFS manner.
-The targeted goal is to eliminate redundantly-generated subgraphs while the search space is traversed, thereby reducing the algorithm's runtime.
-This is accomplished through the usage of the canonical adjacency matrix (CAM) as a means of uniquely representing a graph.
+FFSM operates on labeled undirected transaction graphs in a BFS manner, with the targeted goal of eliminating redundantly-generated subgraphs while the search space is traversed, thereby reducing the algorithm's runtime.
+This is accomplished through the usage of the canonical adjacency matrix (CAM) of a candidate subgraph as a means of uniquely representing it and generating more candidates.
 Each graph is represented as a edge/node-labeled adjacency matrix, whereby the CAM of a graph is its adjacency matrix with the lexicographic-maximal encoding.
 The encoding is simple: concatenate the rows of the lower-triangular into a flat string.
 This scheme offers simple relationships between a represented graph and its subgraphs, leading to efficient candidate generation through joins and extensions of frequent subgraphs and quick pruning if a generated candidate is not in CAM form.
 
 \\ \\
 
-In terms of quality, this paper needs to further elaborate on the join and extension operations as well as the usefulness of a CAM's embedding set, as it is unclear how these operations and concepts are performed and useful.
+In terms of quality, this paper needs to further elaborate on the join and extension operations and the usefulness of a CAM's embedding set, as it is unclear how these operations and concepts are performed and useful.
 Most of the rigorous material is relocated into a non-peer reviewed technical report, including the proofs of a theorem and several important corollaries and procedural pseudocode used in the main algorithm.
 The experimental evaluation of FFSM indicates that its runtimes beat those of gSpan, although only one set of experiments is demonstrated in this paper with further experiments detailed in the aforementioned technical report.
 
@@ -90,7 +89,7 @@ This survey paper provides a comprehensive overview of 19 frequent subtree
  early to mid 2000s. To start off, the authors provide preliminary formalisms,
  brief descriptions of five notable (sub)graph isomorphism algorithms, and a
  high-level overview of the approaches adopted by frequent subgraph / tree 
- mining (FGM/FTM) algorithms, such as certain strategies to subgraph candidate 
+ mining (FGM/FTM) algorithms, such as certain strategies to candidate subgraph  
  generation and canonical labelling representations of graphs and trees. From 
  there, the focus shifts to the state-of-the-art for FTM algorithms followed
  by those more generally applicable to FGM.
@@ -109,18 +108,18 @@ In their discussion on FGM algorithms, algorithms are categorized by whether
  of candidate matches, further subcategorized by the type of input graph (e.g. 
  transaction graphs or a single graph), and even further subcategorized by the 
  strategy for candidate generation (e.g. breadth-first searching of the search 
- space or depth-first). Their discussion focuses on the algorithms’ 
+ space or depth-first). Their discussion focuses on the algorithms' 
  utilized canonical representations, specific approaches to candidate 
  generation, special data structures to facilitate certain operations, and some critical comments 
  on the performance benefits and drawbacks as evident in the originating papers.
 \\ \\
 Overall, the paper is well written in its brevity, yet comprehensive in its coverage. However, 
  there are portions that impede the clarity of certain topics, as well as 
- typographical and technical errors sparsely scattered throughout. In addition, 
- although the paper is comprehensive in its coverage of FSM algorithms in the 
+ typographical and technical errors sparsely scattered throughout.
+ Although the paper is comprehensive in its coverage of FSM algorithms in the 
  early to mid 2000s, the latest papers discussed date to 2008, which leaves a 
  four year gap between their covered state-of-the-art and this article's 
- surveyed works. The authors indicate that only incremental improvements of 
+ publication date. The authors indicate that only incremental improvements of 
  existing strategies had been proposed during that period of time with no new 
  significant proposals. However, it would have been appropriate to provide 
  acknowledgements to these minor improvements at least as an after-comment to 
@@ -149,7 +148,7 @@ Novel contributions include
   the level-wise join operation for generating candidates with reduced duplication; 
   a partitioning strategy aimed at quickly pruning candidates and relaxing the memory demands of transaction ID lists;
   and a canonical labeling scheme that speeds up support calculations and reduces the number of needed subgraph isomorphism operations.
-Various extensions of this labeling scheme are offered to assist graphs with low label diversity or high symmetry and regularity.
+Extensions of this labeling scheme are offered to assist graphs with low label diversity or high symmetry and regularity.
   
 \\ \\
 
@@ -160,9 +159,9 @@ Graphs exhibiting high symmetry and regularity, however, were not adequately tes
 
 \\ \\
 
-Overall, the paper is very well written and easy to comprehend, with only a few typos and awkward grammatical structures.
+Overall, the paper is very well written and easy to comprehend, with only a few typos and awkward grammatical statements.
 The primary novelty of this work is through the canonical representation scheme for which they provide proof of its correctness in the appendix.
-The only concerning aspects of the paper is the absence of a comparative evaluation of FSG against related work and the presentation of some of the experimental results as tables, where the plotting of this data would have aided in a reader's understanding of FSG's scalability.
+The only concerning aspects of the paper is the absence of a comparative evaluation of FSG against related work and the tabular presentation of some of the experimental results, where the plotting of this data would have aided in a reader's understanding of FSG's scalability.
   
   }
 }
@@ -189,12 +188,12 @@ If the code created from a subgraph is not the subgraph's minimum code, it is im
 \\ \\
 
 This paper seems like a high quality breakthrough in the field of frequent subgraph mining, but it's difficult to state this with confidence due to the density of the authors' technical writing.
-For instance, the authors make claims and supply a theorem that are not substantiated in this paper.
+For instance, the authors make claims and state a theorem without substantiation in this paper.
 The reader is instead directed to their non-peer reviewed technical report.
 Their coverage of related works is lacking, only citing two other subgraph miners and two subtree miners with brief remarks.
 In addition, there are some technical errors and notational inconsistencies that muddy up the clarity of their defined concepts and algorithms.
-Performance-wise, the authors compared gSpan against FSG using similar datasets used by FSG, finding gSpan faster and less memory hogging than FSG.
-However, their experimental evaluation seems to have been conducted hastily, only comparing gSpan against FSG using one real-world dataset and a limited number of synthetic ones, all while ignoring AGM.
+Performance-wise, the authors compared gSpan against FSG using similar datasets as used by FSG's authors, finding gSpan faster and less memory hogging than FSG.
+However, their experimental evaluation seems to have been conducted hastily, only comparing gSpan against FSG using one real-world dataset and a limited number of synthetic ones, all while ignoring AGM and other related works.
 Regardless of these issues, the citation count and publication venue of this work indicate that gSpan is as beneficial as the authors claim.
 
 	}
