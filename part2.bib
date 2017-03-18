@@ -1,0 +1,259 @@
+@incollection{Cheng2014,
+    pages = {307-338},
+    title= {Mining Graph Patterns},
+    author={Cheng, Hong and Yan, Xifeng and Han, Jiawei},
+    booktitle={Frequent Pattern Mining},
+    publisher={Springer International Publishing},
+    year = {2014},
+    editor={Aggarwal, Charu C. and Han, Jiawei},
+    address={Cham, Switzerland},
+    annote = {
+    
+This chapter surveys research on frequent subgraph pattern mining, a more application-focused field within the area of frequent subgraph mining, as well as frequent subgraph mining in non-traditional graph models.
+Frequent subgraph patterns are a subset of the frequent subgraphs
+ found within a single massive graph or a transaction graph dataset,
+ characterized as being more \emph{interesting} to a certain application domain than other frequent subgraphs.
+By ignoring \emph{uninteresting} frequent subgraphs, 
+ the computational and storage complexity
+ of a graph mining operation is reduced.
+The chapter begins with preliminary formalisms and brief reviews of the parent field on frequent subgraph mining.
+Motivated by the computational bottleneck of these approaches, the discussion shifts focuses towards works on frequent subgraph pattern mining, and concludes with a review of approaches operating on graph streams and uncertain graphs. 
+
+\\ \\
+ 
+On the mining of subgraph patterns, the reviewed mining algorithms in this chapter target
+    significant subgraphs (4 methods are reviewed),
+    representative subgraphs (1 method),
+    and various dense subgraphs:
+        cliques (4 methods),
+        $k$-cores (1 method),
+        $k$-trusses (2 methods),
+        dense neighborhood graphs (1 method),
+        and dense bipartite subgraphs (1 method).
+Significant subgraphs are frequent subgraphs that either exceed a threshold or maximize a user-defined objective function.
+Representative subgraphs are a small subset of frequent subgraphs that can \emph{represent} many others by being sufficiently similar - a user-defined metric - to the other frequent subgraphs within a dataset.
+A cliques is a subset of vertices from a graph that induce a complete subgraph; similarly, a quasi-clique induces a nearly-complete subgraph.
+The $k$-core of a graph is the largest subgraph with all vertices being $k$-degree or more.
+On $k$-trusses, dense neighborhood graphs, and dense bipartite graphs, the authors neglect to provide adequate definitions.
+Discussions on the reviewed algorithms focus on each one's goal and a brief outlining of the various methods used to reach that goal,
+with no discussions on the experimental performance of these methods.
+
+\\ \\
+
+The final two sections discusses mining techniques on two non-traditional graph models: graph streams and uncertain graphs.
+A graph stream presents portions of a graph as only accessible in some sequential order, whether it be streaming of the edges of a graph (discussed in 2 works), dynamic updates to edge weights of a single large graph (1 work), or limiting access to a subset of graphs arriving in batches (1 work).
+Uncertain graphs present their vertices and edges as probabilistic in existence.
+The goals of the reviewed works are to discover highly reliable subgraphs and to mine subgraphs that have a sufficient probability of being frequent.
+
+\\ \\
+
+This work provides worthwhile discussions and detailed overviews of some of the research it surveys.
+The preliminary formalisms in the beginning of most sections are succinct and clear in relaying to the reader an understanding of certain concepts.
+However, the chapter is inconsistently organized, and some sections feel out of place and rushed while others dwell upon a work for too long or not long enough.
+For instance, the discussion on LEAP, a work published by the authors of this chapter, goes on for five pages whereas other works have at most three-page discussions, some only receiving one paragraph.
+Near the end, when the discussion shifts towards non-traditional graph models, there is a noticeable increase in typos and poorly written statements.
+
+    }
+}
+
+
+@inproceedings{SUBDUE1994,
+ author = {Holder, Lawrence B. and Cook, Diane J. and Djoko, Surnjani},
+ title = {Substructure Discovery in the SUBDUE System},
+ booktitle = {Proceedings of the 3rd International Conference on Knowledge Discovery and Data Mining},
+ series = {AAAIWS '94},
+ year = {1994},
+ location = {Seattle, WA},
+ pages = {169--180},
+ numpages = {12},
+ acmid = {3000868},
+ publisher = {AAAI Press},
+	annote = {
+
+This paper proposes an extension to the authors' SUBDUE system, whereby they strive to compress directed, labeled multigraphs through the discovery and substitution of recurring - but not necessarily frequent - subgraphs through either exact or inexact matching.
+A BFS traversal generates candidate subgraphs from previously-found subgraphs, expanding them one edge at a time.
+These candidates are then scored based on the reduction in the compressed graph's description length as well as optional guidance from background knowledge rules.
+Ultimately, subgraphs that offer the minimum description length (MDL) and highest domain-specific score are identified.
+Their algorithm has been found to prefer smaller, more frequent subgraphs over larger ones, but subsequent passes of SUBDUE may be performed on a previous pass's output so as to identify larger subgraphs.
+
+\\ \\
+
+The experimental analysis of SUBDUE focuses on the fields of chemical component analysis, object recognition in images, and CAD circuit analysis.
+The conducted experiments appear limited in the insights that may be drawn from their system's performance, as the authors only offer the compression ratio achieved by SUBDUE when executed on the few datasets used.
+There was no comparative analysis performed against other similar systems identified in the related works section, nor did their experiments record useful performance metrics such as runtimes or the number/sizes of the subgraphs identified in their experiments.
+
+\\ \\
+
+Overall, the paper is well written but limited in the insights one may draw from the content alone.
+By today's standards, it is flawed in the thoroughness of its experimental analysis and its inability to identify all frequently occurring subgraphs.
+The authors claim that repeated executions of SUBDUE will render better results, but neglect to thoroughly demonstrate this through experimentation.
+
+	}
+}
+
+
+@inproceedings{FFSM2003,
+  author = {Huan, Jun and Wang, Wei and Prins, Jan},
+  title = {Efficient Mining of Frequent Subgraphs in the Presence of Isomorphism},
+  booktitle={Third IEEE International Conference on Data Mining}, 
+  series = {ICDM '03},
+  year = {2003},
+  isbn = {0-7695-1978-4},
+  pages = {549-552},
+  publisher = {IEEE Computer Society},
+  address = {Washington, DC, USA},
+	annote = {
+
+FFSM operates on labeled undirected transaction graphs in a BFS manner, with the targeted goal of eliminating redundantly-generated subgraphs while the search space is traversed, thereby reducing the algorithm's runtime.
+This is accomplished through the usage of the canonical adjacency matrix (CAM) of a candidate subgraph as a means of uniquely representing it and generating more candidates.
+Each graph is represented as a edge/node-labeled adjacency matrix, whereby the CAM of a graph is its adjacency matrix with the lexicographic-maximal encoding.
+The encoding is simple: concatenate the rows of the lower-triangular into a flat string.
+This scheme offers simple relationships between a represented graph and its subgraphs, leading to efficient candidate generation through joins and extensions of frequent subgraphs and quick pruning if a generated candidate is not in CAM form.
+
+\\ \\
+
+In terms of quality, this paper needs to further elaborate on the join and extension operations and the usefulness of a CAM's embedding set, as it is unclear how these operations and concepts are performed and useful.
+Most of the rigorous material is relocated into a non-peer reviewed technical report, including the proofs of a theorem and several important corollaries and procedural pseudocode used in the main algorithm.
+The experimental evaluation of FFSM indicates that its runtimes beat those of gSpan, although only one set of experiments is demonstrated in this paper with further experiments detailed in the aforementioned technical report.
+
+	}
+} 
+
+
+@article{Jiang2013,
+	abstract = {
+	
+Graph mining is an important research area within the domain of data mining.
+The field of study concentrates on the identification of frequent subgraphs within graph data sets.
+The research goals are directed at:
+  (i) effective mechanisms for generating candidate subgraphs (without generating duplicates)
+  and (ii) how best to process the generated candidate subgraphs so as to identify the desired frequent subgraphs in a way that is computationally efficient and procedurally effective.
+This paper presents a survey of current research in the field of frequent subgraph mining, and proposed solutions to address the main research issues.
+
+  },
+  author = {Jiang, Chuntao and Coenen, Frans and Zito, Michele},
+  doi = {10.1017/S0269888912000331},
+  issn = {0269-8889},
+  journal = {The Knowledge Engineering Review},
+  month = {March},
+  number = {01},
+  pages = {75--105},
+  title = {{A survey of frequent subgraph mining algorithms}},
+  volume = {28},
+  year = {2013},
+  annote = {
+
+This survey paper provides a comprehensive overview of 19 frequent subtree
+ mining algorithms and 25 frequent subgraph mining algorithms published in the
+ early to mid 2000s. To start off, the authors provide preliminary formalisms,
+ brief descriptions of five notable (sub)graph isomorphism algorithms, and a
+ high-level overview of the approaches adopted by frequent subgraph / tree 
+ mining (FGM/FTM) algorithms, such as certain strategies to candidate subgraph  
+ generation and canonical labelling representations of graphs and trees. From 
+ there, the focus shifts to the state-of-the-art for FTM algorithms followed
+ by those more generally applicable to FGM.
+\\ \\
+In their discussion on FTM algorithms, they categorize algorithms by the nature 
+ of the input trees (e.g. unordered vs. ordered, free, hybrid, maximal, closed, 
+ induced, and embedded), and further delineate them by numerous factors: the 
+ method of search space traversal and candidate subtree generation; the method 
+ of support computation and the data structures used therein; whether
+ exact or inexact matching is applied for support calculation; and a mentioning of the 
+ ranking of these algorithms in regards to the experimental evaluation from the 
+ originating papers.
+\\ \\
+In their discussion on FGM algorithms, algorithms are categorized by whether 
+ they are general purpose or pattern dependent, subcategorized by the exactness 
+ of candidate matches, further subcategorized by the type of input graph (e.g. 
+ transaction graphs or a single graph), and even further subcategorized by the 
+ strategy for candidate generation (e.g. breadth-first searching of the search 
+ space or depth-first). Their discussion focuses on the algorithms' 
+ utilized canonical representations, specific approaches to candidate 
+ generation, special data structures to facilitate certain operations, and some critical comments 
+ on the performance benefits and drawbacks as evident in the originating papers.
+\\ \\
+Overall, the paper is well written in its brevity, yet comprehensive in its coverage. However, 
+ there are portions that impede the clarity of certain topics, as well as 
+ typographical and technical errors sparsely scattered throughout.
+ Although the paper is comprehensive in its coverage of FSM algorithms in the 
+ early to mid 2000s, the latest papers discussed date to 2008, which leaves a 
+ four year gap between their covered state-of-the-art and this article's 
+ publication date. The authors indicate that only incremental improvements of 
+ existing strategies had been proposed during that period of time with no new 
+ significant proposals. However, it would have been appropriate to provide 
+ acknowledgements to these minor improvements at least as an after-comment to 
+ those solutions on which improvements were made.
+  },
+}
+
+
+@article{KuramochiKarypis2004, 
+  author={M. Kuramochi and G. Karypis}, 
+  journal={IEEE Transactions on Knowledge and Data Engineering}, 
+  title={An efficient algorithm for discovering frequent subgraphs}, 
+  year={2004}, 
+  volume={16}, 
+  number={9}, 
+  pages={1038-1051}, 
+  keywords={computational complexity;data mining;graph theory;pattern recognition;very large databases;chemical compound data sets;data mining techniques;frequent itemset discovery algorithms;frequent pattern discovery problem;frequent subgraph discovery;graph data sets;scientific data sets;Chemical compounds;Data mining;Frequency;Itemsets;Labeling;65;Index Terms- Data mining;chemical compound data sets.;frequent pattern discovery;scientific data sets}, 
+  doi={10.1109/TKDE.2004.33}, 
+  ISSN={1041-4347}, 
+  month={Sept},
+  annote = {
+
+FSG targets the frequent connected subgraphs residing in undirected transaction graphs through a BFS candidate generation scheme.
+Each candidate is represented in canonical form and their occurrence frequency is computed a number of speed-up strategies.
+Novel contributions include 
+  the level-wise join operation for generating candidates with reduced duplication; 
+  a partitioning strategy aimed at quickly pruning candidates and relaxing the memory demands of transaction ID lists;
+  and a canonical labeling scheme that speeds up support calculations and reduces the number of needed subgraph isomorphism operations.
+Extensions of this labeling scheme are offered to assist graphs with low label diversity or high symmetry and regularity.
+  
+\\ \\
+
+Through experimental evaluations, the authors demonstrate the effectiveness and scalability of FSG when applied to real-world chemical datasets and synthetically generated transaction datasets.
+These datasets are sufficiently diverse in properties so as to demonstrate FSG's performance on a few real-world large transactions, many real-world small transactions, and highly diverse synthetic transactions.
+FSG does not perform well on graphs with low label diversity, but its' strategies aimed at reducing memory demands were successful when compared to the alternative approach.
+Graphs exhibiting high symmetry and regularity, however, were not adequately tested, thus flawing that portion of their contributions.
+
+\\ \\
+
+Overall, the paper is very well written and easy to comprehend, with only a few typos and awkward grammatical statements.
+The primary novelty of this work is through the canonical representation scheme for which they provide proof of its correctness in the appendix.
+The only concerning aspects of the paper is the absence of a comparative evaluation of FSG against related work and the tabular presentation of some of the experimental results, where the plotting of this data would have aided in a reader's understanding of FSG's scalability.
+  
+  }
+}
+
+
+@INPROCEEDINGS{1184038, 
+	author={Xifeng Yan and Jiawei Han}, 
+	booktitle={2002 IEEE International Conference on Data Mining, 2002. Proceedings.}, 
+	title={gSpan: graph-based substructure pattern mining}, 
+	year={2002}, 
+	pages={721-724}, 
+	keywords={data mining;tree searching;algorithm;canonical label;depth-first search strategy;frequent connected subgraph mining;frequent graph-based pattern mining;frequent substructure discovery;gSpan;graph datasets;graph-based substructure pattern mining;lexicographic order;performance study;unique minimum DFS code;Chemical compounds;Computer science;Costs;Data mining;Data structures;Graphics;Itemsets;Kernel;Testing;Tree graphs}, 
+	doi={10.1109/ICDM.2002.1184038}, 
+	month={},
+	annote = {
+
+gSpan targets undirected transaction graph datasets to find frequent subgraphs in a DFS manner.
+The main contribution of this paper is their new canonical labeling system based on a code generated through a DFS traversal of a graph.
+To build a canonical label, the authors define the concepts of a DFS code, the DFS Lexicographic Order, the minimum DFS code for a graph, and the DFS Code Tree.
+Using these, gSpan is able to quickly find frequent subgraphs without wasting resources on redundant candidates.
+Frequent subgraphs are recursively expanded one edge at a time and checked for sufficient support using the TID list from the subgraph generating it.
+If the code created from a subgraph is not the subgraph's minimum code, it is immediately pruned as it would have previously been processed.
+
+\\ \\
+
+This paper seems like a high quality breakthrough in the field of frequent subgraph mining, but it's difficult to state this with confidence due to the density of the authors' technical writing.
+For instance, the authors make claims and state a theorem without substantiation in this paper.
+The reader is instead directed to their non-peer reviewed technical report.
+Their coverage of related works is lacking, only citing two other subgraph miners and two subtree miners with brief remarks.
+In addition, there are some technical errors and notational inconsistencies that muddy up the clarity of their defined concepts and algorithms.
+Performance-wise, the authors compared gSpan against FSG using similar datasets as used by FSG's authors, finding gSpan faster and less memory hogging than FSG.
+However, their experimental evaluation seems to have been conducted hastily, only comparing gSpan against FSG using one real-world dataset and a limited number of synthetic ones, all while ignoring AGM and other related works.
+Regardless of these issues, the citation count and publication venue of this work indicate that gSpan is as beneficial as the authors claim.
+
+	}
+}
