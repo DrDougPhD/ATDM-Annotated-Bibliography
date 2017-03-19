@@ -56,6 +56,56 @@ Near the end, when the discussion shifts towards non-traditional graph models, t
     }
 }
 
+@TECHREPORT{WondBaur2010,
+  AUTHOR =        {Wong, Elisabeth A. and Baur, Brittany},
+  TITLE =         {On Network Tools for Network Motif Finding: A Survey Study},
+  INSTITUTION =   {Bio-Grid REU Program, University of Connecticut},
+  ADDRESS =       {Storrs, Connecticut},
+  YEAR  =         {2010},
+  PAGES =         {21},
+  ANNOTE =        {
+  
+This survey covers seven algorithms for mining and identifying motifs in biological networks,
+ which are frequent subgraphs in a target network 
+ that have a statistically significant frequency of occurrence
+ higher than that observed in random networks.
+To begin, a primer is given on the fundamental concepts used in motif motif:
+ graph isomorphism and the computational challenges it brings,
+ various measurement methods for computing a subgraph's frequency to identify motifs,
+ the methods used to generate random graphs.
+From there, the eight algorithms for motif mining are informally described,
+ with the discussion covering each algorithm at a high level.
+
+\\ \\
+
+Algorithms are categorized based on the following properties:
+ whether the algorithms are network-centric (i.e. find all motifs in a given target network)
+ or motif-centric (i.e. determine if a given subgraph is a motif in a given target network);
+ and whether the algorithms perform full enumeration or probabilistic enumeration.
+Each summary begins by describing an algorithm's input parameters,
+ the type of network they can operate on,
+ the manner in which frequencies are counted (i.e. permissibility of overlapping nodes and edges),
+ and the criteria for identifying network motifs.
+Then, the steps and unique methods involved in each algorithm are outlined.
+NeMoFINDER, Kavosh, and MA Visto are network-centric, full-enumeration miners using enumeration trees to build candidate motifs.
+MFinder and FANMOD are similar, but offer probabilistic enumeration methods to reduce runtime at the cost of accuracy, with MFinder susceptible to biased sampling.
+For motif-centric algorithms, Grochow and MODA aim to map \emph{query subgraphs} given as input onto a given target network so as to determine if they are motifs.
+From the discussion on performance, MA Visto and MFinder were found to be computationally more expensive and unable to mine motifs larger than size-5.
+NeMoFINDER and Kavosh, however, demonstrated the ability to find size-13 and size-10 motifs, respectively.
+But, whereas NeMoFINDER took about 20 hours on a larger protein-protein interaction network and is restricted to operate only on undirected graphs, the more generally-applicable Kavosh took nearly 13 days to execute on a smaller yeast transcription network.
+It should be noted that these findings come from different studies and thus could have been performed on computers of substantially different power.
+It is suggested that FANMOD is a better option for error-tolerant motif mining, and MODA demonstrated a faster runtime and classified larger motifs than Grochow.
+
+\\ \\
+
+This work was completed as a technical report following the completion of an undergraduate research program, and although it was not peer reviewed, it did provide some worthwhile information about the proposed algorithms in the papers it surveyed.
+However, there are flaws that hinder a reader's clear understanding of how these algorithms work and compare to one another, and limit the insights that may be drawn from the survey.
+The experimental analysis section requires major improvements as it appears as though the authors simply extracted the experimental findings of the sourced works with little effort in tying the findings together.
+  
+  }
+}
+
+
 
 @inproceedings{SUBDUE1994,
  author = {Holder, Lawrence B. and Cook, Diane J. and Djoko, Surnjani},
