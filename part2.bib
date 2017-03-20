@@ -1,3 +1,67 @@
+@incollection{Tang2010,
+    author="Tang, Lei and Liu, Huan",
+    editor="Aggarwal, Charu C. and Wang, Haixun",
+    title="Graph Mining Applications to Social Network Analysis",
+    booktitle="Managing and Mining Graph Data",
+    year="2010",
+    publisher="Springer US",
+    address="Boston, MA",
+    pages="487--513",
+    annote = {
+    
+This chapter is easy to read, succinct in its discussions, and well organized.
+Claims made throughout the discussion are properly cited and smoothly integrated.
+On the grand scale, the discussion flows from a summary on the patterns and
+characteristics found in real-world, large-scale social networks, moving on to
+surveying techniques for detecting communities and evaluating the \emph{goodness}
+of these detected community.
+\\ \\
+On graph patterns, common characteristics of large-scale networks are discussed.
+Node degrees are often seen to follow a power law distribution in these networks,
+resulting in social networks being classified as \emph{scale-free}.
+This results in two other properties: the small-world phenomenon, where any two
+pairs of nodes tend to be relatively close in a massive social network;
+and community formation, where nodes tend to connect with some subset of nodes,
+forming a community, more often than with outsiders.
+Quantifying the small-world phenomenon can come through measuring a network's
+diameter or approximating it through its effective eccentricity or 
+characteristic path length, though each of these methods lack scalability
+in massive networks.
+\\ \\
+When it comes to communities, a thorough and comprehensive discussion covers
+measures on a community's connectivity through its clustering coefficient and
+reviews a plethora of methods for mining communities in a given network.
+Categories of these methods include the following:
+\begin{itemize}
+\item Node-centric: modularity, reachability, nodal degrees, and the ratio of intra-/intercommunity connections
+\item Group-centric: group-holistic properties such as edge density
+\item Network-centric: partitioning and clustering nodes through global optimization
+ of vertex neighborhood similarities,
+ minimum cuts to define community boundaries,
+ block model comparison,
+ modularity relative to a random network,
+ and latent space mapping.
+\item Hierarchical clustering: top-down through edge betweeness, bottom-up through modularity gain, and search-space traversal.
+\end{itemize}
+All throughout this discussion, remarks on the computational challenges of each method and alternative methods as work arounds are discussed.
+Comparing and evaluating the detected communities of different methods then becomes necessary.
+One may analyze and compare the ($k$-)cliques, $k$-clans, $k$-plexes, or $k$-cores of detected communities immediately.
+Though rare, prior information such as ground truth or semantic labeling permits conventional classification measures to be used.
+Without prior information, community modularity and link prediction can be used for measuring community \emph{goodness}.
+\\ \\
+
+The discussion ends with thoughts on future research into scalability, dynamic
+ communities, integrating large-scale network patterns and heterogeneous connections
+ for social network analysis, and an encouragement on demonstrating the usefulness
+ of communities for applied problems.
+
+    
+    }
+}
+
+
+
+
 @incollection{Cheng2014,
     pages = {307-338},
     title= {Mining Graph Patterns},
@@ -104,6 +168,14 @@ The experimental analysis section requires major improvements as it appears as t
   
   }
 }
+
+
+
+
+
+
+
+
 
 
 
