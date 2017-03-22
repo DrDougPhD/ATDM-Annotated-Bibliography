@@ -1,3 +1,40 @@
+@inproceedings{Cheng:2009:IBS:1572272.1572290,
+ author = {Cheng, Hong and Lo, David and Zhou, Yang and Wang, Xiaoyin and Yan, Xifeng},
+ title = {Identifying Bug Signatures Using Discriminative Graph Mining},
+ booktitle = {Proceedings of the Eighteenth International Symposium on Software Testing and Analysis},
+ series = {ISSTA '09},
+ year = {2009},
+ isbn = {978-1-60558-338-9},
+ location = {Chicago, IL, USA},
+ pages = {141--152},
+ numpages = {12},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {bug signature, discriminative subgraph mining},
+ annote = {
+ 
+This paper applies the LEAP discriminative subgraph mining algorithm towards the problem of software bug localization.
+The authors' approach operates on software behavior graphs, which compactly represents the execution steps performed by a given software based on provided input.
+Given software that contains bugs, a set of software behavior graphs can be formed by running the software on a variety of test cases.
+Each graph in the set is then classified as a faulty run or a successful run.
+With the set of graphs partitioned by these classes, the LEAP algorithm identifies a subgraph that is most discriminative in classifying other graphs.
+The authors use this discriminative subgraph to identify the location of a bug.
+
+There are only two contributions of this paper: (1) representing a software's execution as a graph, and
+(2) a naive extension of LEAP to generate the top $k$ most discriminative subgraphs from two sets of input graphs.
+The claim that their approach allows "for imperfections in traces and slight variations of bug patterns" is not demonstrated in the paper.
+%The authors claim their approach captures the \emph{context} of a software bug, but it does not capture the variable states as would intuitively be expected with the use of the word \emph{context}.
+In my opinion, this work lacks sufficient novelty, clarity, insight, and experimental thoroughness required for academic publication.
+Throughout the paper, there are numerous occasions of misused words and symbology and absent definitions that harm a reader's understanding.
+The authors fail to define the similarity function that permits LEAP to skip over branches in the subgraph enumeration tree.
+Their extension of LEAP is naive by re-running the algorithm $k$ times and building a list of each subgraph that is returned.
+Cosmetically, their pseudocode of this extension appears faulty and inefficient in that it would to perform redundant subgraph enumerations across its $k$ executions of LEAP.
+With regard to experimentation, the authors fail to summarize the Siemens dataset and their approach to running experiments so as to permit reproduction of their experiments.
+
+ }
+}
+
+
 @incollection{Tang2010,
     author="Tang, Lei and Liu, Huan",
     editor="Aggarwal, Charu C. and Wang, Haixun",
