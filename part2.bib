@@ -1,3 +1,53 @@
+
+@article{Elseidy:2014:GFS:2732286.2732289,
+ author = {Elseidy, Mohammed and Abdelhamid, Ehab and Skiadopoulos, Spiros and Kalnis, Panos},
+ title = {GraMi: Frequent Subgraph and Pattern Mining in a Single Large Graph},
+ journal = {Proc. VLDB Endow.},
+ issue_date = {March 2014},
+ volume = {7},
+ number = {7},
+ month = {March},
+ year = {2014},
+ issn = {2150-8097},
+ pages = {517--528},
+ numpages = {12},
+ publisher = {VLDB Endowment},
+    annote = {
+
+GraMi is designed to return subgraph and pattern templates that occur with sufficient frequency in a single directed or undirected labelled graph.
+Specifically, it doesn't return the mappings of these templates, but rather just the set of subgraph patterns that are frequent.
+It operates in a breadth-first search manner, beginning with frequent edges and building subgraphs by extending a node in a frequent subgraph with a valid frequent edge.
+A candidate subgraph's support is then computed using a minimum image based (MNI) support metric, which limits a set of overlapping subgraph instances to be counted as one occurrence.
+GraMi's approach to subgraph isomorphism is to transform it into a constraint satisfaction problem (CSP), a formulation similar to an optimization problem but with the objective function omitted.
+Solving a subgraph-isomorphism CSP results in a feasible solution that represents one mapping of a subgraph onto the graph.
+\\ \\
+Various speed-up strategies are implemented through a number of approaches.
+(1) Subgraph isomorphism is halted when $\tau$, the minimum support threshold, are located.
+(2) In the hopes of quickly pruning a candidate subgraph quickly, short-circuit evaluation is approximately emulated via a \emph{lazy search}, where the search for $\tau$ mappings of a node in a candidate subgraph is postponed if it takes too long.
+Finding a node that has fewer than $\tau$ mappings implies the candidate subgraph is not frequent;
+(3) The search space for node mappings, a subproblem of subgraph isomorphism, is shrunk for future candidate subgraphs by storing invalid node mappings in a hash table for each generated subgraph (\emph{push-down pruning} and \emph{automorphism} processing).
+GraMi is further extended to perform pattern mining and constraint-based subgraph mining, called CGraMi, for structural and semantic constraints.
+The authors also offer an approximate version, called AGraMi, that returns a subset of frequent subgraphs.
+\\ \\
+Through experimentation, GraMi was demonstrated to execute faster and consume less memory that GrowStore, an algorithm based on gSpan using MNI-based support.
+A few experiments were run on very large graphs (millions of nodes), but most of GraMi's capabilities were demonstrated on smaller graphs (thousands of nodes).
+AGraMi's speed was demonstrated to be faster than GraMi's, as was CGraMi's ability to detect larger frequent subgraph patterns.
+Each speed-up strategy was demonstrated to contribute to these performance improvements.
+Finally, GraMi's speed-up strategies were compared against using GraphQL, a state-of-the-art frequency evaluation function, and found to execute faster.
+\\ \\
+This paper is published in the top journal for database systems, VLDB, but the paper still lacks theoretical and experimental thoroughness, and also presents many vague and undefined terms, for me to consider it a good quality paper.
+The author's representation of the problem as a CSP, although initially awkward on the first reading, brings some clarity into defining their algorithm.
+However, the authors neglect to analyze the storage complexity of their algorithm, which becomes an issue when single graphs become prohibitively large.
+Most of their demonstrated experiments are on smaller graph datasets, with only a few plots evaluating GraMi and GraphStore on multi-million-node graphs.
+In searching for more information on GraphStore, the authors failed to provide a citation to its implementation.
+Seeing as GraphStore is based on gSpan, which operates on transactional graph datasets, I am left to wonder if their comparisons were appropriate.
+Also, for AGraMi, there is a significant flaw in the design of the iteration timeout function $f(\alpha)$ resulting in either it never halting a search or it being dominated by the undefined constant $\beta$, which the authors neglect to define in their experiments.
+With AGraMi's perfect performance at $\alpha \approx 10^{-4}$, I suspect the authors favored experimental results that embellished GraMi's capabilities.
+
+    }
+}
+
+
 @inproceedings{Cheng:2009:IBS:1572272.1572290,
  author = {Cheng, Hong and Lo, David and Zhou, Yang and Wang, Xiaoyin and Yan, Xifeng},
  title = {Identifying Bug Signatures Using Discriminative Graph Mining},
