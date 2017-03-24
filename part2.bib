@@ -122,8 +122,8 @@ Near the end, when the discussion shifts towards non-traditional graph models, t
 GraMi is designed to return subgraph and pattern templates 
   that occur with sufficient frequency
   in a single directed or undirected labelled graph.
-Specifically, it doesn't return the mappings of these templates,
-  but rather just the set of subgraph patterns that are frequent.
+Specifically, it doesn't return the locations of these subgraphs in the target graph,
+  but rather just the set of subgraph patterns that are frequent therein.
 It operates in a breadth-first search manner,
   beginning with frequent edges
   and building subgraphs
@@ -132,14 +132,15 @@ It operates in a breadth-first search manner,
 A candidate subgraph's support is then computed
   using the minimum image based (MNI) support measure,
     which limits a set of overlapping subgraph instances
-    to be counted as one occurrence.
+    to be counted as only one occurrence.
 GraMi's approach to subgraph isomorphism
   is to transform it into a constraint satisfaction problem (CSP),
     a formulation similar to an optimization problem
     but with the objective function omitted.
-Solving a subgraph-isomorphism CSP results in a feasible solution
-  that represents one mapping of a subgraph
-  onto the graph.
+Solving a subgraph-isomorphism CSP on a given candidate subgraph and a target graph
+  results in a feasible solution
+  that represents one mapping of the subgraph
+  onto the target graph.
 \\ \\
 Various speed-up strategies are implemented through a number of approaches.
 (1) Subgraph isomorphism is halted when $\tau$,
@@ -152,14 +153,16 @@ Various speed-up strategies are implemented through a number of approaches.
     of a node in a candidate subgraph
     is postponed if it takes too long.
 Finding a node that has fewer than $\tau$ mappings
-  implies the candidate subgraph is not frequent;
+  implies the candidate subgraph is not frequent.
 (3) The search space for node mappings,
   a subproblem of subgraph isomorphism,
   is shrunk for future candidate subgraphs
   by storing invalid node mappings
   in a hash table for each generated subgraph
   (\emph{push-down pruning} and \emph{automorphism} processing).
-GraMi is further extended to perform pattern mining
+GraMi is further extended to perform pattern mining,
+  which permits subgraphs that are sufficiently similar to a candidate subgraph
+  to be counted towards its support,
   and constraint-based subgraph mining,
     called CGraMi,
     for structural and semantic constraints.
@@ -176,7 +179,7 @@ A few experiments were run on very large graphs (millions of nodes),
 AGraMi's speed was demonstrated to be faster than GraMi's,
   as was CGraMi's ability to detect larger frequent subgraph patterns.
 Each speed-up strategy was demonstrated to contribute to these performance improvements.
-Finally, GraMi's speed-up strategies were compared against using GraphQL,
+Finally, GraMi's speed-up strategies were compared against the use of GraphQL,
   a state-of-the-art frequency evaluation function,
   and found to execute faster.
 \\ \\
@@ -188,7 +191,7 @@ The author's representation of the problem as a CSP,
   although initially awkward on the first reading,
   brings some clarity into defining their algorithm.
 However, the authors neglect to analyze the storage complexity of their algorithm,
-  which becomes an issue when single graphs become prohibitively large.
+  which becomes an issue as single graphs become prohibitively large.
 Most of their demonstrated experiments are on smaller graph datasets,
   with only a few plots evaluating GraMi and GraphStore
   on multi-million-node graphs.
@@ -199,8 +202,8 @@ Seeing as GraphStore is based on gSpan,
   I am left to wonder if their comparisons were appropriate.
 Also, for AGraMi, there is a significant flaw
   in the design of the iteration timeout function $f(\alpha)$,
-    resulting in either it never halting a search
-    or the function being dominated by the undefined constant $\beta$,
+    resulting in either it never halting a search as intended
+    or being completely dependent on the constant $\beta$.
 The authors fail to define the value of $\beta$ that was used in their experiments.
 With AGraMi's perfect performance at $\alpha \approx 10^{-4}$,
   I suspect the authors favored experimental results
@@ -244,7 +247,7 @@ measures on a community's connectivity through its clustering coefficient and
 reviews a plethora of methods for mining communities in a given network.
 Categories of these methods include the following:
 \begin{itemize}
-\item Node-centric: modularity, reachability, nodal degrees, and the ratio of intra-/intercommunity connections
+\item Node-centric: modularity, reachability, nodal degrees, and the ratio of intra-/inter-community connections
 \item Group-centric: group-holistic properties such as edge density
 \item Network-centric: partitioning and clustering nodes through global optimization
  of vertex neighborhood similarities,
@@ -254,7 +257,7 @@ Categories of these methods include the following:
  and latent space mapping.
 \item Hierarchical clustering: top-down through edge betweeness, bottom-up through modularity gain, and search-space traversal.
 \end{itemize}
-All throughout this discussion, remarks on the computational challenges of each method and alternative methods as scalable work arounds are discussed.
+All throughout this discussion, remarks on the computational challenges of each method and alternative methods as scalable workarounds are discussed.
 Comparing and evaluating the detected communities of different methods then becomes necessary.
 One may analyze and compare the ($k$-)cliques, $k$-clans, $k$-plexes, or $k$-cores of detected communities immediately.
 Though rare, prior information such as ground truth or semantic labeling permits conventional classification measures to be used.
