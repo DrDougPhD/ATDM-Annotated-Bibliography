@@ -14,8 +14,29 @@
     address = {New York, NY, USA},
     annote = {
  
- 
- 
+    In this paper, the authors propose VoG as an approximation method for summarizing large graphs into a set of its most important subgraphs.
+    The manner in which a graph is summarized derives from the principals of graph compression and the Minimum Description Length, where subgraphs are extracted from the graph and replaced with single-node placeholders, resulting in an overall encoding that may shrink the length of the graph's encoding.
+    In their approach, a large graph is decomposed into smaller subgraphs, each labelled according to their similarity to one of six defined graph patterns: cliques, near-cliques, bipartite and near-bipartite cores, stars and chains.
+    Each of these subgraphs is then scored according to the savings in space achieved by their extraction and labelling, with the scores being calculated from explicitly-defined description length models for each of the six graph pattern types.
+    Once all subgraphs have been labelled and scored, a heuristic-driven selection method chooses which subgraphs to extract and which ones to leave in an "error matrix".
+    The resulting set of subgraphs and error matrix offers two things: (1) the subgraphs are considered the most interesting subgraphs that provide a summary of the larger graph, and (2) the original graph can be losslessly reconstructed using both the error matrix and the encodings of the set of subgraphs.
+    \\ \\
+    Experiments on VoG were conducted using seven real-world graphs with sizes ranging from approximately 1000 to 400000 nodes and from 2000 to 2000000 edges.
+    These graphs were decomposed into candidate subgraphs using a modified version of the SlashBurn algorithm.
+    The authors neglect to compare VoG to related works, only comparing its compression ability to the baseline of no compression at all.
+    Upon applying VoG to the datasets representing social networks, they find significantly more star patterns than any others.
+    However, this may be a side effect of their modified SlashBurn algorithm, which appears to favor the creation of stars while it generates subgraph candidates.
+    Through their discussion, the authors suggest the use of their Greedy'NForget algorithm for selecting subgraph candidates for the summary provides the most succinct, yet informative, graph summary of the other heuristic-driven selection procedures.
+    \\ \\
+    In regards to this paper's quality, it lacks in its comprehensive evaluation of their system in comparison to others, and in the argued usefulness of their system.
+    Their experiments and analyses of the summaries returned by VoG indicate that stars are overwhelming selected over all other structures.
+    It should be noted that stars appear in all graphs with some degree of connectivity between nodes.
+    Each node in a graph is, in fact, a hub of a star formed by its neighbors, and those nodes forming large stars simply have very high degree.
+    Thus, the identification of stars in a graph is trivial in that one only has to iterate through nodes in order of decreasing degree.
+    It is because of this that I believe stars are not that interesting.
+    For other found patterns, the authors only discuss the semantic meaning of bipartite cores that are present in social networks.
+    There is no discussion about the semantic meaning of cliques nor chains.
+    
     }
 } 
 
