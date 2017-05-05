@@ -51,7 +51,8 @@
     pages="626--688",
     annote = {
 
-    
+    Due to time constraints, a thorough reading and annotating of this paper could not be completed.
+    Additionally, Armita deserves a break from reading my excessively-long annotations.
 
     }
 }
@@ -65,10 +66,30 @@
     ISSN={2379-7703}, 
     annote = {
 
+    Motivated by the infeasibility of subgraph mining on massive graphs, this paper provides experimental evaluation of three alternative and less strict algorithms to subgraph isomorphism: graph simulation, dual simulation, and strong simulation.
+    Graph simulation matches a query graph to instances in a target graph by identifying vertices with the same labels and corresponding children.
+    Dual simulation builds from graph simulation and extends the matching to include both children and parents of a matched vertex.
+    Strong simulation increases the strictness in the matches by introducing a ball membership constraint on matches vertices.
+    The authors briefly describe how these algorithms may operate in a distributed environment, and consider various distributed computing frameworks and partitioning schemes to arrive at distributed subgraph mining.
+    Implementations are created for these algorithms within the Akka framework, and graph partitioning is accomplished using the METIS multilevel $k$-way partitioning scheme.
+    \\ \\
+    The evaluation of these algorithms focuses on the effect on the runtimes and communication complexity of these algorithms when the number of distributed workers is varied and the size of the query graph is increased.
+    First, the algorithms are demonstrated to be scalable, with graph and dual simulation approaching each other's runtime when the number of workers increases.
+    But, with more workers, the return on investment lapses quickly.
+    From there, the impact on graph partitioning is examined.
+    With regard to runtime, graph simulation and strong simulation appear agnostic to the manner in which the graph is partitioned and distributed.
+    At larger query graph sizes, dual simulation shows the most noticeable benefit between using min-cut partitioning and round-robin.
+    With regard to network communication, the evaluation clearly demonstrates that min-cut partitioning reduced network communication for every algorithm, which helps to constrain any bottlenecks that may arise from slow inter-partition communication.
+    \\ \\
+    This paper was a quick and easy read, but lacks novelty.
+    The algorithms were described very briefly and at a high level, leaving me a little cloudy on understanding how they work.
+    The contributions of the paper are distributed implementations of the three aforementioned algorithms on a well-established distributed computing framework, and the experimental analysis conducted to evaluate the algorithm's performance.
+    There were few typographical errors, and the paper has a natural flow to it, and the placement of citations seems appropriately integrated with the overall discussion-tone of the paper.
     
-
     }
 }
+
+For any distributed computing framework, the massive graph needs partitioning that results in mostly self-contained subgraphs so as to reduce the bottleneck introduced by interprocess communication.
 
 @book{Robinson:2013:GD:2556013,
     author = {Robinson, Ian and Webber, Jim and Eifrem, Emil},
@@ -77,7 +98,33 @@
     publisher = {O'Reilly Media, Inc.},
     annote = {
 
-    
+This book provides an easy introduction to the Neo4j graph database system created by the author's company.
+It begins with some introductory material on labeled graphs and provides a high level categorization of the types of graph-focused systems out on the market.
+Generally, there are two classes of systems:
+transactional graph databases, which operate on graphs in real time and processes them directly;
+and graph computing engines, which operate offline and process graphs similar to bulk data analysis tools.
+This book focuses on the former.
+\\ \\
+Graph databases offer similar functionality, reliability guarantees, and interfaces as traditional database systems.
+The differences comes from the simplicity of querying for graph data from a database and under-the-hood approaches to graph storage and processing.
+One’s motivation to adopt a graph database comes from the performance boost gained when certain use cases warrant representing data in graph form, as opposed to employing traditional means of representation and processing.
+\\ \\
+Chapter 2 delves deeper into these performance differences between relational, NoSQL, and graph databases.
+Relational databases are appropriate for tabular data with predefined schemas that enable relationships.
+The process of adding new relationships, a task made flexible by graph databases, requires significant effort and potential system downtime.
+Additionally, when one seeks to obtain multi-hop relationship information from a relational databases, one must implement complex logic that forces the system to perform computationally complex executions.
+NoSQL databases worsens the situation by evicting the handling of relationships from within the database system to the application layer.
+This introduces more computational and logical complexity to basically achieve the same functionality built into relational databases.
+Instead of shoehorning graph-targeted functionality into a traditional system, it is preferable to employ a graph database, which inherently offers connected data storage and connected data traversal.
+\\ \\
+Chapter 3 focuses on the Cypher graph query language, which provides the graph creation and querying interface to the Neo4j system.
+Brief definitions of the language’s query structure is provided.
+Then, another round of comparing relational representation of graphs to native is discussed, whereby the authors emphasize the inefficiencies and complexities that result from the former.
+A few toy examples are provided as hands-on exercises on using Cypher to create and query a graph database.
+From there, the authors describe common pitfalls one may find themselves in while designing a domain / graph model, and suggests how one may mitigate these mistakes.
+The chapter ends with a checklist to aid in the creation of a domain / graph model, and warns of anti-patterns that may cloud one’s proper approach to designing for queriability.
+\\ \\
+This book is an easy read and provides a very informative introduction into Neo4j, the Cypher graph querying language, and the fundamental differences between traditional systems and graph database systems. Its descriptions of the core elements of the Cypher language and toy examples assists the user with learning the language quickly. One critical comment about the text is the lack of detail given to the under-the-hood methods used by Neo4j for processing and storing graphs. While the authors describe the inefficiencies of adopting relational databases for graph processing, they neglect to allocate the same level of attention to detailing the complexities of their own system.
 
     }
 } 
@@ -95,4 +142,9 @@
  numpages = {30},
  publisher = {Kluwer Academic Publishers},
  address = {Hingham, MA, USA},
+ annote = {
+ 
+Due to time constraints, a thorough reading and annotating of this paper could not be completed.
+ 
+ }
 } 
